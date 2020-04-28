@@ -1,0 +1,589 @@
+﻿<html>
+<head>
+    <title>Arwizon Registration form</title>
+    <style>
+        header img {
+            
+           margin:2% 0 2% 4%;
+        }
+
+        .heading {
+            display:inline-block;
+            margin-top: 10px;
+            width: 60%;
+            text-align: center;
+            
+        }
+
+        h1 {
+            font-weight: bold;
+           
+            font-family: Calibri;
+        }
+
+        .form {
+            display:inline-block;
+            text-align:left;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border-radius:1rem;
+            border:3px solid blue;
+            background-color: white;
+            padding: 30px;
+            width:60%;
+        }
+       
+        input[type=radio]:focus{
+           transform:scale(1.5,1.5);
+        }
+        input[type=checkbox]:focus {
+            transform: scale(1.5,1.5);
+        }
+
+
+        .button {
+            color: #fff;
+            font-weight: bold;
+            border-radius: 1rem;
+            background-color: #007bff;
+            border-color: #007bff;
+            text-align: center;
+            padding: 3% 10%;
+            font-size: 1rem;
+            transition: transform 1s;
+        }
+
+            .button:hover {
+                transform: scale(1.2,1.2);
+                animation-name: submitButton;
+                animation-duration: 3s;
+            }
+
+        @keyframes submitButton {
+            0% {
+                background-color: #007bff;
+            }
+
+            100% {
+                background-color: red;
+            }
+        }
+
+        footer {
+            width: 100%;
+            
+            background-color: #732626;
+            padding: 0% 8% 3% 10%;
+        }
+
+        footer p {
+              font-size: 26px;
+        }
+
+        footer > div {
+                text-align: left;
+                color: white;
+        }
+
+        footer > div > div {
+                    margin-top: 4%;
+        }
+
+        #bottomFooter {
+            padding: 2% 0 2% 0;
+        }
+       span{
+           color:red;
+       }
+       .textBorder{
+           border-color:red;
+       }
+    </style>
+    
+    <link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header style="display:inline-block;background-color:#fff;float:left;width:100%;">
+        <img src="../Images/Arwizon1.png" />
+        <div class="heading">
+            <h1>Registration Form</h1>
+        </div>
+    </header>
+
+    <div align="center" style="background-image: url(../Images/corp1.jpg);">
+        <div class="form">
+            <form onsubmit="return submitForm()" novalidate autocomplete="off" method="get" action="../HTML/welcome.html">
+
+                <div class="form-group">
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">First Name:</label>
+                            <input id="firstName" required pattern="[A-Za-z]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" placeholder="First name" name="FirstName" type="text" />
+                        </div>
+                        <div class="col">
+                            <br />
+                            <span  id="spanFirstName"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">Last Name:</label>
+                            <input id="lastName" required pattern="[A-Za-z]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" onchange="fullNameDisplay()" class="form-control form-control-sm" placeholder="Last name" name="LastName" type="text" />
+                        </div>
+                        <div class="col">
+                            <br />
+                            <span  id="spanLastName"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">Full Name:</label><input id="fullName" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" readonly type="text" />
+                        </div>
+                        <div class="col">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">Password:</label>
+                            <input id="password" required pattern="[A-Za-z0-9@#$%^&*]+" minlength="8" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm"  placeholder=" Password" name="password" type="password" />
+                        </div>
+                           <div class="col">
+                               <br />
+                               <span id="spanPassword"></span>
+                           </div>
+                    </div>
+                    <div class="row">
+                         <div class="col">
+                                <label class="col-form-label col-form-label-sm">Confirm Password:</label>
+                                <input id="confirmPassword" required onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm"  placeholder="Confirm Password" name="confirmPassword" type="password" />
+                         </div>
+                    <div class="col">
+                         <br />
+                                <span id="spanConfirmPassword"></span>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col">
+                                <label class="col-form-label col-form-label-sm">Email:</label>
+                                    <input id="emailText" required pattern="[A-Za-z]+[0-9]+@[a-z]+.[a-z]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" name="Email" placeholder="Email Address" type="text" />
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanEmail"></span>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col">
+                                    <label class="col-form-label col-form-label-sm">Phone:</label>
+                                    <input id="phoneText" required pattern="[7-9]{1}[0-9]{9}" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" name="phone" placeholder="+1 (999) 999 9999" type="tel" />
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanPhone"></span>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col">
+                                    <label class="col-form-label col-form-label-sm">Address:</label>
+                                    <textarea id="addressText" required onfocus="inputFocus(this)" onblur="inputBlur(this)" name="address" class="form-control form-control-sm"></textarea> 
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanAddress"></span>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col">
+                                    <label class="col-form-label col-form-label-sm">D.O.B:</label>
+                                    <input id="dateText" required onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" name="date" type="date" />
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanDate"></span>
+                                </div>
+                     </div>
+                    <div class="form-row">
+                                <div class="col">
+                                    <label class="col-form-label ">Gender:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" class="form-check-input gender" value="male" type="radio" />male
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" class="form-check-input gender" value="female" type="radio" />female
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" class="form-check-input gender" value="others" type="radio" />others
+                                    </div>
+                                    <br />
+                                    <span id="spanGender"></span>
+                                </div>
+                                <div class="col">
+                                    <label class="col-form-label ">Years of experience:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input experience" name="experience" value="2" type="radio" />2
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input experience" name="experience" value="5" type="radio" />5
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input experience" name="experience" value="5+" type="radio" />>5
+                                    </div><br />
+                                    <span id="spanExperience"></span>
+                                </div>
+                    </div>
+                    <div class="form-group">
+                                <label class="col-form-label ">Languages known:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="language" value="kannada" type="checkbox" />kannada
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="language" value="english" type="checkbox" />English
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="language" value="hindi" type="checkbox" />Hindi
+                                </div><br />
+                                <span id="spanLanguage"></span>
+                    </div>
+                    <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="col-form-label ">City:</label><br />
+                                        <input id="dropdownCity" required onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" type="text" name="city" list="city">
+                                        <datalist id="city">
+
+                                            <option value="sullia">
+                                            <option value="mangalore">
+                                            <option value="bangalore">
+                                        </datalist>
+                                        <span id="spanCity"></span>
+                                    </div>
+                                    <div class="col">
+                                        <label class="col-form-label ">Skills:</label><br />
+                                        <input id="dropdownSkills" required onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" type="text" name="skills" list="Skills">
+                                        <datalist id="Skills">
+                                            <option value="html">
+                                            <option value="css">
+                                            <option value="javascript">
+                                            <option value="nodejs">
+                                            <option value="php">
+
+                                        </datalist>
+                                        <span id="spanSkills"></span>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="form-group">
+                         <label class="col-form-label ">Upload Resume:</label>
+                        <input required onchange="fileUpload(this)" name="file" class="form-control-file-inline" type="file" />
+                        <br/><span id="spanFile"></span>
+                    </div>
+                </div>
+                <div class="row">
+                     <div style="margin-top:1%;" class="col">
+                                <input class="button" type="submit" value="Submit details" />
+                     </div>
+                     <div style="margin-top:1%;" class="col">
+                                <input class="button" type="reset" />
+                     </div>
+                     <div style="margin-top:1%;" class="col">
+                                <input class="button" type="button" value="display" onclick="submitForm()" />
+                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer align="center">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Menu</p>
+                Home<br />
+                Registration<br />
+                About<br />
+                Services<br />
+                Contact<br />
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Service</p>
+                Retail<br />
+                Manufacturing<br />
+                Healthcare<br />
+                Oil & Gas<br />
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Contact</p>
+                sales@arwizon.com<br />
+                (080)2655 0099<br />
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Location</p>
+                Arwizon Digital Private Limited.<br />
+                INDIA|USA<br />
+
+            </div>
+        </div>
+
+    </footer>
+    <div id="bottomFooter" align="center">
+        <div>
+            <img class="img-fluid" src="../Images/Arwizon-B.png" alt=".." />
+        </div><br />
+        <div>
+            ©2020. Arwizon
+        </div>
+    </div>
+
+    <script>
+      
+        function inputFocus(obj) {
+            obj.style.backgroundColor = "yellow";
+        }
+
+        function inputBlur(obj) {
+            obj.style.backgroundColor = "white";
+        }
+        function fullNameDisplay() {
+            document.querySelector("#fullName").value = document.querySelector("#firstName").value + " " + document.querySelector("#lastName").value;
+        }
+             
+        function fileUpload(obj) {
+            var file = document.querySelector("input[type=file]");
+           
+            for (var i = 0; i < file.files.length;i++){
+                var size = file.files[i].size;
+                 var f = Math.round((size / 1024));
+                if (f >= 1000) {
+                   document.querySelector("#spanFile").textContent =file.files[i].name + " File too big,select file below 1mb";
+                }
+                else if (f < 100) {
+                    document.querySelector("#spanFile").textContent = file.files[i].name + " File too small,select file above 100kb";
+                }else
+                    document.querySelector("#spanFile").textContent = "";
+
+            }
+        }
+       
+        function submitForm() {
+            var arr = document.querySelectorAll("span");
+            
+            for (var i = 0; i< arr.length; i++) {
+                arr[i].textContent = "";
+               
+            }
+           
+          
+            
+            var firstName = document.querySelector("#firstName");
+            var lastName = document.querySelector("#lastName");
+            var phone = document.querySelector("#phoneText");
+            var password = document.querySelector("#password");
+            var confirmPassword = document.querySelector("#confirmPassword");
+            var email = document.querySelector("#emailText");
+            var address = document.querySelector("#addressText");
+            var date = document.querySelector("#dateText");
+            var radioGender = document.querySelector(".gender:checked");
+            var radioExperience = document.querySelector(".experience:checked");
+            var checkboxLanguage = document.querySelector("input[type=checkbox]:checked");
+            var dropdownCity = document.querySelector("#dropdownCity");
+            var dropdownSkills = document.querySelector("#dropdownSkills");
+            var uploadFile = document.querySelector("input[type=file]").files[0];
+            
+            if (!firstName.validity.valid || !lastName.validity.valid || !phone.validity.valid ||
+                 !password.validity.valid || !confirmPassword.validity.valid || !email.validity.valid ||
+                 !address.validity.valid || !date.validity.valid || radioGender == null || radioExperience == null ||
+                 checkboxLanguage == null || !dropdownCity.validity.valid || !dropdownSkills.validity.valid || uploadFile == null) {
+
+                if (!firstName.validity.valid) {
+                    firstNameValidity();
+                } else {
+                    document.querySelector("#firstName").style.borderColor = "cyan";
+                }
+                if (!lastName.validity.valid) {
+                    lastNameValidity();
+                } else {
+                    document.querySelector("#lastName").style.borderColor = "cyan";
+                }
+                if (!phone.validity.valid) {
+                    phoneValidity();
+                } else {
+                    document.querySelector("#phoneText").style.borderColor = "cyan";
+                }
+                if (!password.validity.valid) {
+                    passwordValidity();
+                } else {
+                    document.querySelector("#password").style.borderColor = "cyan";
+                }
+                if (!confirmPassword.validity.valid) {
+                    confirmPasswordValidity();
+                } else {
+                    document.querySelector("#confirmPassword").style.borderColor = "cyan";
+                }
+                if (!email.validity.valid) {
+                    emailValidity();
+                } else {
+                    document.querySelector("#emailText").style.borderColor = "cyan";
+                }
+                if (!address.validity.valid) {
+                    addressValidity();
+                } else {
+                    document.querySelector("#addressText").style.borderColor = "cyan";
+                }
+                if (!date.validity.valid) {
+                    dateValidity();
+                } else {
+                    document.querySelector("#dateText").style.borderColor = "cyan";
+                }
+                if (radioGender == null) {
+                    radioGenderValidity();
+                }
+                if (radioExperience == null) {
+                    radioExperienceValidity();
+                }
+                if (checkboxLanguage == null) {
+                    checkboxLanguageValidity();
+                }
+                if (!dropdownCity.validity.valid) {
+                    dropdownCityValidity();
+
+                } else
+                    document.querySelector("#dropdownCity").style.borderColor = "cyan";
+                if (!dropdownSkills.validity.valid) {
+                    dropdownSkillsValidity();
+                } else
+                    document.querySelector("#dropdownSkills").style.borderColor = "cyan";
+                if (uploadFile == null) {
+                    fileUploadValidity();
+                } else
+                    document.querySelector("input[type=file]").style.borderColor = "cyan";
+                return false;
+            }
+            else {
+
+                return true;
+            }
+            
+        }
+        
+        function firstNameValidity() {
+            if (document.querySelector("#firstName").validity.valueMissing) {
+
+                document.querySelector("#spanFirstName").textContent = "Enter Your Name ";
+                document.querySelector("#firstName").style.borderColor = "red";
+            } else if (document.querySelector("#firstName").validity.patternMismatch) {
+                document.querySelector("#spanFirstName").textContent = "Enter only alphabets ";
+                document.querySelector("#firstName").style.borderColor = "red";
+            }
+          
+        }
+        function lastNameValidity() {
+            if (document.querySelector("#lastName").validity.valueMissing) {
+
+                document.querySelector("#spanLastName").textContent = "Enter Your Last Name ";
+                document.querySelector("#lastName").style.borderColor = "red";
+            } else if (document.querySelector("#lastName").validity.patternMismatch) {
+                document.querySelector("#spanLastName").textContent = "Enter only alphabets ";
+                document.querySelector("#lastName").style.borderColor = "red";
+            }
+        }
+        function phoneValidity() {
+            if (document.querySelector("#phoneText").validity.valueMissing) {
+
+                document.querySelector("#spanPhone").textContent = "Enter Your Phone Number ";
+                document.querySelector("#phoneText").style.borderColor = "red";
+            } else if (document.querySelector("#phoneText").validity.patternMismatch) {
+                document.querySelector("#spanPhone").textContent = "Invalid Phone Number ";
+                document.querySelector("#phoneText").style.borderColor = "red";
+            } 
+        }
+        function passwordValidity() {
+            if (document.querySelector("#password").validity.valueMissing) {
+
+                document.querySelector("#spanPassword").textContent = "Enter a password ";
+                document.querySelector("#password").style.borderColor = "red";
+            } else if (document.querySelector("#password").validity.patternMismatch) {
+                document.querySelector("#spanPassword").textContent = "Enter only Numbers ";
+                document.querySelector("#password").style.borderColor = "red";
+            } else if (document.querySelector("#password").validity.tooShort) {
+                document.querySelector("#spanPassword").textContent = "Password too small ";
+                document.querySelector("#password").style.borderColor = "red";
+            } 
+        }
+        function confirmPasswordValidity(){   
+            if (document.querySelector("#confirmPassword").validity.valueMissing) {
+
+                document.querySelector("#spanConfirmPassword").textContent = "Enter same password ";
+                document.querySelector("#confirmPassword").style.borderColor = "red";
+            } else if (document.querySelector("#password").value != document.querySelector("#confirmPassword").value) {
+                document.querySelector("#spanConfirmPassword").textContent = "Password mismatch ";
+                document.querySelector("#confirmPassword").style.borderColor = "red";
+            } 
+        }
+        function emailValidity() {
+            if (document.querySelector("#emailText").validity.valueMissing) {
+
+                document.querySelector("#spanEmail").textContent = "Enter Your Email ID ";
+                document.querySelector("#emailText").style.borderColor = "red";
+            } else if (document.querySelector("#emailText").validity.patternMismatch) {
+                document.querySelector("#spanEmail").textContent = "Invalid Email ID";
+                document.querySelector("#emailText").style.borderColor = "red";
+            } 
+        }
+        function addressValidity() {
+            
+            if (document.querySelector("#addressText").value == "") {
+                
+                document.querySelector("#spanAddress").textContent = "Enter Your Address ";
+                document.querySelector("#addressText").style.borderColor = "red";
+               
+            } 
+
+        }
+        function dateValidity() {
+            if (document.querySelector("#dateText").value == "") {
+                document.querySelector("#spanDate").textContent = "Enter Your D.O.B ";
+                document.querySelector("#dateText").style.borderColor = "red";
+            } 
+        }
+
+        function radioGenderValidity() {
+            if (document.querySelector(".gender:checked") == null) {
+                document.querySelector("#spanGender").textContent = "Select any One ";
+            }
+        }
+        function radioExperienceValidity() {
+            if (document.querySelector(".experience:checked") == null) {
+                document.querySelector("#spanExperience").textContent = "Select any One ";
+            }
+        }
+        function checkboxLanguageValidity() {
+            if (document.querySelector("input[type=checkbox]:checked") == null) {
+                document.querySelector("#spanLanguage").textContent = "Select any One ";
+            }
+        }
+        function dropdownCityValidity() {
+            if (document.querySelector("#dropdownCity").validity.valueMissing) {
+                document.querySelector("#spanCity").textContent = "Select any One ";
+                document.querySelector("#dropdownCity").style.borderColor = "red";
+            }
+        }
+        function dropdownSkillsValidity() {
+            if (document.querySelector("#dropdownSkills").validity.valueMissing) {
+                document.querySelector("#spanSkills").textContent = "Select any One ";
+                document.querySelector("#dropdownSkills").style.borderColor = "red";
+            }
+        }
+        function fileUploadValidity() {
+            if (document.querySelector("input[type=file]").validity.valueMissing) {
+                document.querySelector("#spanFile").textContent = "Select any One ";
+                document.querySelector("input[type=file]").style.borderColor = "red";
+            } 
+        }
+    </script>
+</body>
+</html>

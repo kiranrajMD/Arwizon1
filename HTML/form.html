@@ -1,0 +1,31 @@
+<html>
+<head><title>Arwizon Enroll Form</title>
+</head>
+<body>
+    <form method="post">
+        Name:<input placeholder="Your name" name="name" type="text" /><br />
+        Password:<input size="30" minlength="2" name="password" type="password" /><br />
+        Address:<textarea column="10"> </textarea><br/>
+        D.O.B:<input name="date" type="date" /><br />
+        T.O.B:<input name="date" type="time" /><br />
+        color:<input type="color"/><br/>
+        Gender:
+               <input checked name="gender" value="male" type="radio" />male
+               <input name="gender" value="female" type="radio" />female
+               <input name="gender" value="others" type="radio" />others<br />
+        Languages known:kannada:<input checked name="language" value="kannada" type="checkbox" />
+                        English:<input name="language" value="english" type="checkbox" />
+                        Hindi:<input name="language" value="hindi" type="checkbox" /><br />
+        City:<select name="city" multiple>
+            <option value="none">Select</option>
+            <option selected value="sullia">Sullia</option>
+            <option value="mangalore">Mangalore</option>
+            <option value="bangalore">Bangalore</option>
+        </select><br />
+        Upload Resume:<input type="file" /><br />
+        <input type="submit" value="Submit details"/>
+        <input type="reset" value="reset page"/>
+
+    </form>
+</body>
+</html>

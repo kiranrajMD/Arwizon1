@@ -1,0 +1,88 @@
+<html>
+    <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <style>
+       table{
+           margin-left:2%;
+           margin-right:2%;
+       }
+    </style>
+    </head>
+
+    <body onload="send()">
+       
+        <div id="search" align="center"><br/>
+         <h4><img width="100" height="100" src="../Images/covid.jpg" alt="..."/>&nbsp&nbspCOVID-19</h4>
+            <input class="form-control-sm" style="width:50%;" type="text" id="state" name="state">
+            <button type="button" class="btn btn-primary">search</button>
+        </div><br/>
+              <table class="table table-bordered " id="covidTable" >
+                  <thead class="thead-dark">
+                      <tr>
+                          <th>State</th>
+                          <th>Active</th>
+                          <th>Confirmed</th>
+                          <th>Deaths</th>
+                          <th>DeltaConfirmed</th>
+                          <th>DeltaDeaths</th>
+                          <th>DeltaRecovered</th>
+                          <th>LastUpdatedTime</th>
+                          <th>Recovered</th>
+                          <th>Statecode</th>
+                          <th>Statenotes</th>
+                      </tr>
+                    </thead>
+              </table>
+        
+        <script>
+            var obj;
+        function send()
+        {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var text=this.responseText;
+            console.log(typeof(text));
+            obj=JSON.parse(text);
+            console.log(typeof(obj));
+            var trow;
+            for (var i =obj.statewise.length-1; i >=0; i--) {
+
+             trow = trow + "<tr><td>" + obj.statewise[i].state + "</td><td>" + obj.statewise[i].active + "</td><td>" + obj.statewise[i].confirmed + "</td><td>" + obj.statewise[i].deaths + "</td><td>" + obj.statewise[i].deltaconfirmed + "</td><td>" + obj.statewise[i].deltadeaths + "</td><td>" + obj.statewise[i].deltarecovered + "</td><td>" + obj.statewise[i].lastupdatedtime + "</td><td>" + obj.statewise[i].recovered + "</td><td>" + obj.statewise[i].statecode + "</td><td>" + obj.statewise[i].statenotes + "</td></tr>";
+        }
+
+         $("tr").after(trow);
+            }
+
+        };
+        xhttp.open("GET", "https://api.covid19india.org/data.json", true);
+        xhttp.send();
+        }
+        $(document).ready(function () {
+            $("button").click(function () {
+                let state = $("#state").val();
+                let filter = state.toUpperCase();
+
+                let tr = $("tr");
+              
+
+
+                for (let i = obj.statewise.length - 1; i >= 0; i--) {
+                    if (obj.statewise[i].state.toUpperCase().indexOf(filter) > -1) {
+
+
+                        $(tr[i + 1]).show();
+                    } else {
+                        $(tr[i + 1]).hide();
+                    }
+                }
+            });
+        });
+        </script>
+                     
+    </body>
+</html>

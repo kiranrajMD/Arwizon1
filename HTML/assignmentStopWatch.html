@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>
+
+    </title>
+    <style>
+        #hour,#minutes,#seconds{
+            height:30px;
+            width:30px;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="start" value="start" />
+        <div id="hour"></div>
+        <div id="minutes"></div>
+        <div id="seconds"></div>
+    <input type="button" id="stop" value="stop" />
+
+    <script>
+        var divElement = document.querySelectorAll("div");
+        var hourcount=0, minutecount=0, secondcount=0,milisecond=0;
+        for (var i = 0; i < divElement.length; i++) {
+            divElement[i].textContent = "0";
+        }
+        document.querySelector("#start").addEventListener("click", startTime);
+        document.querySelector("#stop").addEventListener("click", stopTime);
+
+        function startTime() {
+            hour = setInterval(hourCount, 3600000);
+            minutes= setInterval(minuteCount, 60000);
+            seconds = setInterval(secondCount, 1000);
+            
+        }
+        function stopTime() {
+            clearInterval(hour);
+            clearInterval(minutes);
+            clearInterval(seconds);
+            hourcount = 0;
+            document.querySelector("#hour").textContent = hourcount;
+            minutecount = 0;
+            document.querySelector("#minutes").textContent = minutecount;
+            secondcount = 0;
+            document.querySelector("#seconds").textContent = secondcount;
+        }
+        function hourCount() {
+            hourcount++;
+            if (hourcount > 12) {
+                hourcount = 1;
+            }
+            document.querySelector("#hour").textContent = hourcount;
+        }
+        function minuteCount() {
+            minutecount++;
+            if (minutecount > 60) {
+                minutecount = 1;
+            }
+            document.querySelector("#minutes").textContent =minutecount;
+        }
+        function secondCount() {
+            secondcount++;
+            if (secondcount > 60) {
+                secondcount = 1;
+            }
+            document.querySelector("#seconds").textContent = secondcount;
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+        <div align="center" style="background-color:blue;">
+            <div style="display:inline-block;text-align:left;">
+                <form autocomplete="off" method="get" action="../HTML/welcome.html">
+
+                    <div class="form-group">
+                        <label class="col-form-label">Name:</label>
+                        <input class="form-control" pattern="[A-Z].[A-Za-z]{2,}" required size="30" placeholder="Enter Your name" name="name" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Password:</label><input class="form-control" pattern="[A-Za-z0-9@#$%^&*]{8,}" required size="30" placeholder="Enter Your Password" minlength="8" name="password" type="password" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Confirm Password:</label><input class="form-control" pattern="[A-Za-z0-9@#$%^&*]{8,}" required size="30" placeholder="Confirm Your Password" minlength="8" name="confirmPassword" type="password" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Email:</label><input class="form-control" pattern="[A-Za-z0-9]+@[A-Za-z]{3,}.[a-z]+" required placeholder="Enter Email Address" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Address:</label> <textarea class="form-control"> </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">D.O.B:</label><input class="form-control" required name="date" type="date" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Gender:</label>
+                        <input name="gender" value="male" type="radio" />male
+                        <input name="gender" value="female" type="radio" />female
+                        <input name="gender" value="others" type="radio" />others
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Years of experience:</label>
+                        <input name="experience" value="2" type="radio" />2
+                        <input name="experience" value="5" type="radio" />5
+                        <input name="experience" value="5+" type="radio" />more than 5
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Languages known:</label>
+                        <input name="language" value="kannada" type="checkbox" />kannada
+                        <input name="language" value="english" type="checkbox" />English
+                        <input name="language" value="hindi" type="checkbox" />Hindi
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">City:</label><br /><input class="form-control" type="text" name="city" list="city">
+                        <datalist id="city">
+
+                            <option value="sullia">
+                            <option value="mangalore">
+                            <option value="bangalore">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Skills:</label><br /><input class="form-control" type="text" name="skills" list="Skills">
+                        <datalist id="Skills">
+                            <option value="html">
+                            <option value="css">
+                            <option value="javascript">
+                            <option value="nodejs">
+                            <option value="php">
+                        </datalist>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Upload Resume:</label><input class="btn btn-primary" type="file" />
+                    </div>
+                    <input class="button" type="submit" value="Submit details" />
+                    <input style="margin-left:40px;" class="button" type="reset" />
+
+                </form>
+            </div>
+        </div>
+   
+</body>
+</html>

@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>game</title>
+    <link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color:skyblue;
+        }
+        body div div{
+            height:100px;
+            width:100px;
+            display:inline-block;
+            border:solid black;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <br />
+        <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <br />
+        <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+        <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        </div>
+    </div>
+         <br/>
+        
+    <img id="img1" src="../Images/img1.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img2" src="../Images/imag2.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img3" src="../Images/img1.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img4" src="../Images/img1.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img5" src="../Images/chakra.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img6" src="../Images/imag3.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img7" src="../Images/imag3.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img8" src="../Images/imag2.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <img id="img9" src="../Images/imag3.jpg" draggable="true" ondragstart="drag(event)" width="100" height="100" />
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+
+    </script>
+</body>
+</html>

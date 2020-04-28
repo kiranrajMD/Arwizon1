@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Jquery Hover</title>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div style="background-color: blue;height: 400px;width:200px;"></div>
+
+    <script>
+        $(document).ready(function () {
+           
+            $("div").hover(function () {
+                $("div").animate({backgroundColor:"red"});
+            });
+        });
+    </script>
+</body>
+</html>

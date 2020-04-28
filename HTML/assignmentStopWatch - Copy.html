@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>
+
+    </title>
+    <style>
+        #hour,#minutes,#seconds{
+            height:30px;
+            width:30px;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="start" value="start" />
+        <div id="hour"></div>
+        <div id="minutes"></div>
+        <div id="seconds"></div>
+    <input type="button" id="stop" value="stop" />
+
+    <script>
+       
+        var hourcount=24, minutecount=0, secondcount=0;
+        document.querySelector("#hour").textContent = hourcount;
+        document.querySelector("#minutes").textContent = minutecount;
+        document.querySelector("#seconds").textContent = secondcount;
+
+        document.querySelector("#start").addEventListener("click", startTime);
+        document.querySelector("#stop").addEventListener("click", stopTime);
+
+        function startTime() {
+            hour = setInterval(hourCount, 3600000);
+            minutes= setInterval(minuteCount, 60000);
+            seconds = setInterval(secondCount, 1000);
+            
+        }
+        function stopTime() {
+            clearInterval(hour);
+            clearInterval(minutes);
+            clearInterval(seconds);
+            
+        }
+        function hourCount() {
+           
+            if (hourcount == 0 && minutecount==0 && secondcount==0) {
+                clearInterval(hour);
+                clearInterval(minutes);
+                clearInterval(seconds);
+            }
+            hourcount--;
+            document.querySelector("#hour").textContent = hourcount;
+        }
+        function minuteCount() {
+           
+            minutecount--;
+            document.querySelector("#minutes").textContent =minutecount;
+        }
+        function secondCount() {
+            if (minutecount == 0 && secondcount == 0) {
+                hourcount--;
+                document.querySelector("#hour").textContent = hourcount;
+            }
+            if (minutecount == 0) {
+                minutecount = 59;
+                document.querySelector("#minutes").textContent = minutecount;
+            }
+            
+            if (secondcount == 0) {
+                secondcount = 60;
+            }
+            secondcount--;
+            document.querySelector("#seconds").textContent = secondcount;
+        }
+        
+    </script>
+</body>
+
+</html>

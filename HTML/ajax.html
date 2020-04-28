@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+
+    </head>
+
+    <body onload="send()">
+        <table id="table1" border="2px;">
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+            </tr>
+          
+        </table>
+        <input type="text" id="name" name="name">
+        
+        
+        <script>
+        function send()
+        {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var text=this.responseText;
+            console.log(typeof(text));
+            var obj=JSON.parse(text);
+            console.log(typeof(obj));
+            var trow;
+         for (var i = 0; i < obj.employees.length; i++) {
+
+             trow=trow+"<tr><td>"+obj.employees[i].firstName+"</td><td>"+obj.employees[i].lastName+"</td></tr>";
+         }
+        
+         $("tr").after(trow);
+            }
+        };
+        xhttp.open("GET", "http://www.json-generator.com/api/json/get/bVQIdUVZwy?indent=2", true);
+        xhttp.send();
+        }
+       
+
+    </script>
+
+  
+            
+            
+
+
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>Traffic</title>
+    <link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <style>
+       
+         div{
+            width:10%;
+            height:20%;
+            border-radius:4rem;
+            border:1px solid black;
+        }
+        .c1{
+            background-color:red;
+        }
+        .c2{
+            background-color:yellow;
+        }
+        .c3 {
+            background-color: green;
+        }
+        .c4 {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    
+        <input type="button" onclick="start()" value="Start" /><br/><input type="button" onclick="stop()" value="Stop" />
+        
+            <div >
+
+            </div>
+            <div >
+
+            </div>
+            <div >
+
+            </div>
+        
+
+    
+    <script>
+        var intervalobj;
+       
+        var count = 0;
+        var div1 = document.querySelectorAll("div");
+        function timer() {
+            if (count == 0) {
+                div1[0].className = "c1";
+                div1[1].className = "c4";
+                div1[2].className = "c4";
+                count++;
+            }
+            else if(count==1){
+                div1[0].className = "c4";
+                div1[1].className = "c2";
+                div1[2].className = "c4";
+                count++;
+            }
+            else {
+                div1[0].className = "c4";
+                div1[1].className = "c4";
+                div1[2].className = "c3";
+                count = 0;
+            }
+        }
+        function start() {
+            timeIntervalObj = setInterval(timer, 1000);
+        }
+        function stop() {
+            clearInterval(timeIntervalObj);
+            
+        }
+    </script>
+</body>
+</html>

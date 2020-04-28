@@ -1,0 +1,633 @@
+﻿<html>
+<head>
+    <title>Arwizon Registration form</title>
+    <style>
+        header img {
+            
+           margin:2% 0 2% 4%;
+        }
+
+        .heading {
+            display:inline-block;
+            margin-top: 10px;
+            width: 60%;
+            text-align: center;
+            
+        }
+
+        h1 {
+            font-weight: bold;
+           
+            font-family: Calibri;
+        }
+
+        .form {
+            display:inline-block;
+            text-align:left;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border-radius:1rem;
+            border:3px solid blue;
+            background-color: white;
+            padding: 30px;
+            width:60%;
+        }
+       
+        input[type=radio]:focus{
+           transform:scale(1.5,1.5);
+        }
+        input[type=checkbox]:focus {
+            transform: scale(1.5,1.5);
+        }
+
+
+        .button {
+            color: #fff;
+            font-weight: bold;
+            border-radius: 1rem;
+            background-color: #007bff;
+            border-color: #007bff;
+            text-align: center;
+            padding: 3% 10%;
+            font-size: 1rem;
+            transition: transform 1s;
+        }
+
+            .button:hover {
+                transform: scale(1.2,1.2);
+                animation-name: submitButton;
+                animation-duration: 3s;
+            }
+
+        @keyframes submitButton {
+            0% {
+                background-color: #007bff;
+            }
+
+            100% {
+                background-color: red;
+            }
+        }
+
+        footer {
+            width: 100%;
+            
+            background-color: #732626;
+            padding: 0% 8% 3% 10%;
+        }
+
+        footer p {
+              font-size: 26px;
+        }
+
+        footer > div {
+                text-align: left;
+                color: white;
+        }
+
+        footer > div > div {
+                    margin-top: 4%;
+        }
+
+        #bottomFooter {
+            padding: 2% 0 2% 0;
+        }
+       
+    </style>
+    
+    <link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header style="display:inline-block;background-color:#fff;float:left;width:100%;">
+        <img src="../Images/Arwizon1.png" />
+        <div class="heading">
+            <h1>Registration Form</h1>
+        </div>
+    </header>
+
+    <div align="center" style="background-image: url(../Images/corp1.jpg);">
+        <div class="form">
+            <form onsubmit="return submitForm()" novalidate    autocomplete="off" method="get" action="../HTML/welcome.html">
+
+                <div class="form-group">
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">First Name:</label>
+                            <input id="firstName" required pattern="[A-Za-z]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" placeholder="First name" name="FirstName" type="text" />
+                        </div>
+                        <div class="col">
+                            <br />
+                            <span class="col-form-label col-form-label-sm" id="spanFirstName"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">Last Name:</label>
+                            <input id="lastName" required pattern="[A-Za-z]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" onchange="fullNameDisplay()" class="form-control form-control-sm" placeholder="Last name" name="LastName" type="text" />
+                        </div>
+                        <div class="col">
+                            <br />
+                            <span class="col-form-label col-form-label-sm" id="spanLastName"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">Full Name:</label><input id="fullName" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" readonly type="text" />
+                        </div>
+                        <div class="col">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label col-form-label-sm">Password:</label>
+                            <input id="password" required pattern="[A-Za-z0-9]{8,}" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" size="30" placeholder=" Password" name="password" type="password" />
+                        </div>
+                           <div class="col">
+                               <br />
+                               <span id="spanPassword"></span>
+                           </div>
+                    </div>
+                    <div class="row">
+                         <div class="col">
+                                <label class="col-form-label col-form-label-sm">Confirm Password:</label>
+                                <input id="confirmPassword" required pattern="[A-Za-z0-9]{8,}" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" size="30" placeholder="Confirm Password" name="confirmPassword" type="password" />
+                         </div>
+                    <div class="col">
+                         <br />
+                                <span id="spanConfirmPassword"></span>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col">
+                                <label class="col-form-label col-form-label-sm">Email:</label>
+                                    <input id="emailText" required pattern="[A-Za-z]+[0-9]+@[a-z]+.[a-z]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" name="Email" placeholder="Email Address" type="text" />
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanEmail"></span>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col">
+                                    <label class="col-form-label col-form-label-sm">Phone:</label>
+                                    <input id="phoneText" required pattern="[7-9]{1}[0-9]{9}" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" name="phone" placeholder="+1 (999) 999 9999" type="tel" />
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanPhone"></span>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col">
+                                    <label class="col-form-label col-form-label-sm">Address:</label>
+                                    <textarea id="addressText" required pattern="[A-Za-z0-9]+" onfocus="inputFocus(this)" onblur="inputBlur(this)" name="address" class="form-control form-control-sm"> </textarea>
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanAddress"></span>
+                                </div>
+                    </div>
+                    <div class="row">
+                                <div class="col">
+                                    <label class="col-form-label col-form-label-sm">D.O.B:</label><input id="dateText" required onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" name="date" type="date" />
+                                </div>
+                                <div class="col">
+                                    <br />
+                                    <span id="spanDate"></span>
+                                </div>
+                     </div>
+                    <div class="form-row">
+                                <div class="col">
+                                    <label class="col-form-label ">Gender:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" class="form-check-input gender" value="male" type="radio" />male
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" class="form-check-input gender" value="female" type="radio" />female
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input name="gender" class="form-check-input gender" value="others" type="radio" />others
+                                    </div>
+                                    <br />
+                                    <span id="spanGender"></span>
+                                </div>
+                                <div class="col">
+                                    <label class="col-form-label ">Years of experience:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input experience" name="experience" value="2" type="radio" />2
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input experience" name="experience" value="5" type="radio" />5
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input experience" name="experience" value="5+" type="radio" />>5
+                                    </div><br />
+                                    <span id="spanExperience"></span>
+                                </div>
+                    </div>
+                    <div class="form-group">
+                                <label class="col-form-label ">Languages known:</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="language" value="kannada" type="checkbox" />kannada
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="language" value="english" type="checkbox" />English
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="language" value="hindi" type="checkbox" />Hindi
+                                </div><br />
+                                <span id="spanLanguage"></span>
+                    </div>
+                    <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="col-form-label ">City:</label><br /><input id="dropdownCity" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" type="text" name="city" list="city">
+                                        <datalist id="city">
+
+                                            <option value="sullia">
+                                            <option value="mangalore">
+                                            <option value="bangalore">
+                                        </datalist>
+                                        <span id="spanCity"></span>
+                                    </div>
+                                    <div class="col">
+                                        <label class="col-form-label ">Skills:</label><br /><input id="dropdownSkills" onfocus="inputFocus(this)" onblur="inputBlur(this)" class="form-control form-control-sm" type="text" name="skills" list="Skills">
+                                        <datalist id="Skills">
+                                            <option value="html">
+                                            <option value="css">
+                                            <option value="javascript">
+                                            <option value="nodejs">
+                                            <option value="php">
+
+                                        </datalist>
+                                        <span id="spanSkills"></span>
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="form-group">
+                                <label class="col-form-label ">Upload Resume:</label><input multiple onchange="fileUpload(this)" name="file" class="form-control-file-inline" type="file" />
+
+                    </div>
+                </div>
+                <div class="row">
+                     <div style="margin-top:1%;" class="col">
+                                <input class="button" type="submit" value="Submit details" />
+                     </div>
+                     <div style="margin-top:1%;" class="col">
+                                <input class="button" type="reset" />
+                     </div>
+                     <div style="margin-top:1%;" class="col">
+                                <input class="button" type="button" value="display" onclick="submitForm()" />
+                     </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer align="center">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Menu</p>
+                Home<br />
+                Registration<br />
+                About<br />
+                Services<br />
+                Contact<br />
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Service</p>
+                Retail<br />
+                Manufacturing<br />
+                Healthcare<br />
+                Oil & Gas<br />
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Contact</p>
+                sales@arwizon.com<br />
+                (080)2655 0099<br />
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <p>Location</p>
+                Arwizon Digital Private Limited.<br />
+                INDIA|USA<br />
+
+            </div>
+        </div>
+
+    </footer>
+    <div id="bottomFooter" align="center">
+        <div>
+            <img class="img-fluid" src="../Images/Arwizon-B.png" alt=".." />
+        </div><br />
+        <div>
+            ©2020. Arwizon
+        </div>
+    </div>
+
+    <script>
+       /* function displaySpan(){
+            document.querySelector("#spanFirstName").textContent = "Your First Name is " + document.querySelector("#firstName").value;
+            
+            document.querySelector("#spanLastName").textContent = "Your Last Name is " + document.querySelector("#lastName").value;
+            document.querySelector("#spanPassword").textContent = "Your Password is " + document.querySelector("#password").value;
+            document.querySelector("#spanConfirmPassword").textContent = "Your Password is " + document.querySelector("#confirmPassword").value;
+            document.querySelector("#spanGender").textContent = "Your Gender is " + document.querySelector(".gender:checked").value;
+            document.querySelector("#spanExperience").textContent = "Your Experience is " + document.querySelector(".experience:checked").value;
+            document.querySelector("#spanEmail").textContent = "Your Email is " + document.querySelector("#emailText").value;
+            document.querySelector("#spanPhone").textContent = "Your Phone is " + document.querySelector("#phoneText").value;
+            document.querySelector("#spanAddress").textContent = "Your Address is " + document.querySelector("#addressText").value;
+            document.querySelector("#spanDate").textContent = "Your D.O.B is " + document.querySelector("#dateText").value;
+            document.querySelector("#spanCity").textContent = "Your city is " + document.querySelector("#dropdownCity").value;
+            document.querySelector("#spanskills").textContent = "Your Skill is " + document.querySelector("#dropdownSkills").value;
+
+            document.querySelector("#fullName").value = document.querySelector("#firstName").value + " "+document.querySelector("#lastName").value;
+           
+            var spancolor = document.querySelectorAll("span");
+            for (var i = 0; i < spancolor.length; i++) {
+                spancolor[i].style.color = "blue";
+            }
+
+            var arr = document.querySelectorAll("input[type=checkbox]:checked");
+            var text=" Your Languages are ";
+            var i=0;
+            for (i = 0; i < arr.length-1; i++) {
+                text = text + arr[i].value + ",";
+            }
+            text = text + arr[i].value;
+            document.querySelector("#spanLanguage").textContent = text;
+            
+            var obj;
+        }*/
+        function inputFocus(obj) {
+            obj.style.backgroundColor = "yellow";
+        }
+
+        function inputBlur(obj) {
+            obj.style.backgroundColor = "white";
+        }
+        function fullNameDisplay() {
+            document.querySelector("#fullName").value = document.querySelector("#firstName").value + " " + document.querySelector("#lastName").value;
+        }
+       /*
+        var pattern="^[A-Za-z]+$";
+        function firstNamePattern(obj) {
+            var firstName = obj.value;
+            if(firstName.search(pattern)==-1)
+            {
+                document.querySelector("#spanFirstName").textContent = "You can have only alphabets";
+                obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanFirstName").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }
+        function lastNamePattern(obj) {
+            var lastName = obj.value;
+            if (lastName.search(pattern) == -1) {
+                document.querySelector("#spanLastName").textContent = "You can have only alphabets";
+                obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanLastName").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }
+        var passwordpattern = "[A-Za-z0-9]{8,}";
+        function passwordPattern(obj) {
+            var pass = obj.value;
+            if (pass.search(passwordpattern) == -1) {
+                document.querySelector("#spanPassword").textContent = "Invalid Password";
+                obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanPassword").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }
+        function confirmPasswordPattern(obj) {
+            var pass = obj.value;
+            if (pass.search(passwordpattern) == -1) {
+                document.querySelector("#spanConfirmPassword").textContent = "Invalid Password";
+                obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanConfirmPassword").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }
+        var emailpattern="^[A-Za-z]+[0-9]+@[a-z]+.[a-z]+";
+        function emailPattern(obj) {
+            var email = obj.value;
+            if (email.search(emailpattern) == -1) {
+                document.querySelector("#spanEmail").textContent = "Invalid Email";
+               obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanEmail").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }
+        var phonepattern = "[7-9]{1}[0-9]{9}";
+        function phonePattern(obj) {
+            var phone = obj.value;
+            if (phone.search(phonepattern) == -1) {
+                document.querySelector("#spanPhone").textContent = "Invalid Phone Number";
+                obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanPhone").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }
+        var addresspattern = "[A-Za-z0-9]+";
+        function patternAddress(obj) {
+            var address = obj.value;
+            if (address.search(addresspattern) == -1) {
+                document.querySelector("#spanAddress").textContent = "Invalid Address";
+               obj.style.borderColor = "red";
+            }
+            else {
+                document.querySelector("#spanAddress").textContent = "";
+                obj.style.borderColor = "cyan";
+            }
+        }*/
+
+        
+        function radiofunc1() {
+            var radiobutton = document.querySelector(".gender:checked");
+           
+            if (radiobutton == null) {
+                document.querySelector("#spanGender").textContent = "Select one choice";
+                
+            }
+            else
+                document.querySelector("#spanGender").textContent = "";
+
+        }
+        function radiofunc2() {
+            var radiobutton = document.querySelector(".experience:checked");
+
+            if (radiobutton == null) {
+                document.querySelector("#spanExperience").textContent = "Select one choice";
+            }
+            else
+                document.querySelector("#spanExperience").textContent = "";
+        }
+        function checkboxfunc() {
+            var checkboxbutton = document.querySelector("input[type=checkbox]:checked");
+            if (checkboxbutton == null) {
+                document.querySelector("#spanLanguage").textContent = "Select one choice";
+            }
+            else
+                document.querySelector("#spanLanguage").textContent = "";
+        }
+        function dropdownCity() {
+            var city = document.querySelector("#dropdownCity");
+            if (city.value == "") {
+                document.querySelector("#spanCity").textContent = "Select one choice";
+               
+            }
+            else
+                document.querySelector("#spanCity").textContent = "";
+             
+        }
+        function dropdownSkills() {
+            var city = document.querySelector("#dropdownSkills");
+            if (city.value == "") {
+                document.querySelector("#spanSkills").textContent = "Select one choice";
+             
+            }
+            else
+                document.querySelector("#spanSkills").textContent = "";
+                
+        }
+        function fileUpload(obj) {
+            var file = document.querySelector("input[type=file]");
+            console.log(file.files);
+            for (var i = 0; i < file.files.length;i++){
+                var size = file.files[i].size;
+                 var f = Math.round((size / 1024));
+                if (f >= 1000) {
+                   document.querySelector("#spanFile").textContent =file.files[i].name + "File too big,select file below 1mb";
+                }
+                else if (f < 100) {
+                    document.querySelector("#spanFile").textContent = file.files[i].name + "File too small,select file above 100kb";
+                 }
+
+            }
+        }
+       /* function filecheck() {
+            var file = document.querySelector("input[type=file]");
+            if (file == null) {
+                document.querySelector("#spanFile").textContent = "Upload a file";
+            }
+            else {
+                document.querySelector("#spanFile").textContent = "";
+
+            }
+        }*/
+        /*function firstName() {
+            var spanFirstName = document.querySelector("#spanFirstName");
+            if (spanFirstName.textContent == "") {
+                document.querySelector("#firstName").style.borderColor = "red";
+            }
+        }
+        function lastName() {
+            var spanLastName = document.querySelector("#spanLastName");
+            if (spanLastName.textContent == "") {
+                document.querySelector("#lastName").style.borderColor = "red";
+            }
+        }
+        function password() {
+            var spanPassword = document.querySelector("#spanPassword");
+            if (spanPassword.textContent == "") {
+                document.querySelector("#password").style.borderColor = "red";
+            }
+        }
+        function confirmPassword() {
+            var spanConfirmPassword = document.querySelector("#spanConfirmPassword");
+            if (spanFirstName.textContent == "") {
+                document.querySelector("#confirmPassword").style.borderColor = "red";
+            }
+        }*/
+        function submitForm() {
+            document.querySelector("span").textContent = "";
+            radiofunc1();
+            radiofunc2();
+            checkboxfunc();
+            dropdownCity();
+            dropdownSkills();
+           // filecheck();
+            //firstName();
+            //lastName();
+           // password();
+           // confirmPassword();
+          /*  var spanContent = document.querySelectorAll("span");
+            for (var i = 0; i < spanContent.length; i++) {
+                if(spanContent[i].textContent!="")
+                {
+                    return false;
+                    
+                }
+                else {
+                     
+                    continue;
+                }
+                
+            }
+            return true;
+            */
+            
+            var firstName = document.querySelector("#firstName");
+            var lastName = document.querySelector("#lastName");
+            var phone = document.querySelector("#phoneText");
+            var password = document.querySelector("#password");
+            var confirmPassword = document.querySelector("#confirmPassword");
+            if (!firstName.validity.valid || !lastName.validity.valid || !phone.validity.valid || !password.validity.valid || !confirmPassword.validity.valid) {
+                
+                firstNameValidity();
+                lastNameValidity();
+                phoneValidity();
+                passwordValidity();
+                return false;
+            } else {
+               
+                return true;
+            }
+            
+        }
+        function firstNameValidity() {
+            if (document.querySelector("#firstName").validity.valueMissing) {
+
+                document.querySelector("#spanFirstName").textContent = "Enter Your Name ";
+            } else if (document.querySelector("#firstName").validity.patternMismatch) {
+                document.querySelector("#spanFirstName").textContent = "Enter only alphabets ";
+            }
+        }
+        function lastNameValidity() {
+            if (document.querySelector("#lastName").validity.valueMissing) {
+
+                document.querySelector("#spanLastName").textContent = "Enter Your Last Name ";
+            } else if (document.querySelector("#lastName").validity.patternMismatch) {
+                document.querySelector("#spanLastName").textContent = "Enter only alphabets ";
+            }
+        }
+        function phoneValidity() {
+            if (document.querySelector("#phoneText").validity.valueMissing) {
+
+                document.querySelector("#spanPhone").textContent = "Enter Your Phone Number ";
+            } else if (document.querySelector("#phoneText").validity.patternMismatch) {
+                document.querySelector("#spanPhone").textContent = "Enter only Numbers ";
+            }
+        }
+       
+    </script>
+</body>
+</html>
